@@ -1,0 +1,89 @@
+Brief Introduction of Google Speech Recognition API:-
+--------------------------------------------------------
+Google Cloud Speech-to-Text enables developers to convert audio to text by applying powerful neural network models in an easy-to-use API.
+The API recognizes 120 languages and variants to support your global user base. You can enable voice command-and-control, transcribe audio 
+from call centers, and more. 
+It can process real-time streaming or prerecorded audio, using Google’s machine learning technology.
+
+Code:-
+-------------
+
+pip install SpeechRecognition
+import speech_recognition as sr
+
+from google.colab import files
+def getLocalFiles():
+    _files = files.upload()
+    if len(_files) >0:
+       for k,v in _files.items():
+         open(k,'wb').write(v)
+getLocalFiles()
+
+Testing Male Speech
+---------------------------------------------
+
+filename="male.wav"
+r = sr.Recognizer()
+
+# open the file
+with sr.AudioFile(filename) as source:
+    # listen for the data (load audio to memory)
+    audio_data = r.record(source)
+    # recognize (convert from speech to text)
+    text = r.recognize_google(audio_data)
+    print(text)
+output:-what if somebody decides to break it be careful that you keep adequate coverage but look for places to save money baby it's taking longer to get things squared away than the bankers expected during the Y for once company may win her tax hated retirement income based on the two naked bone when the title of this type of song is in question or waxing or gassing needed work on a flat surface and smooth out system uses a single self-contained unit the old shop at it still holds
+a good mechanic is usually a bad boss or higher in later years
+
+Observation:-Worked well
+
+Testing Female Speech:-
+----------------------------
+
+from google.colab import files
+def getLocalFiles():
+    _files = files.upload()
+    if len(_files) >0:
+       for k,v in _files.items():
+         open(k,'wb').write(v)
+getLocalFiles()
+
+filename="female.wav"
+r = sr.Recognizer()
+# open the file
+with sr.AudioFile(filename) as source:
+    # listen for the data (load audio to memory)
+    audio_data = r.record(source)
+    # recognize (convert from speech to text)
+    text = r.recognize_google(audio_data)
+    print(text)
+ Output:-this is what gives the operating in his are there of dignity turbulent towards roses much is 
+ 50 ft in a choreographer Mets arbitrate did not have ever settle back into acquiescence with things as they were around in this instance such personal virtues were a luxury few other cases also wear under advisement Horsethief runs and edit multiple 
+ implications and possible headaches be a marketing program.
+ 
+ Observation:-Missed many words like 'perhaps' and somewhere few words in continuation
+ 
+ Testing Speech mixed with sound:-
+ -------------------------------------
+ 
+ from google.colab import files
+def getLocalFiles():
+    _files = files.upload()
+    if len(_files) >0:
+       for k,v in _files.items():
+         open(k,'wb').write(v)
+getLocalFiles()
+
+filename="h_orig_noise.wav"
+r = sr.Recognizer()
+# open the file
+with sr.AudioFile(filename) as source:
+    # listen for the data (load audio to memory)
+    audio_data = r.record(source)
+    # recognize (convert from speech to text)
+    text = r.recognize_google(audio_data)
+    print(text)
+    
+ Output:-these are I think I know his house is in the village though
+ Observation:-
+Working Fine.Didnt missed any words
